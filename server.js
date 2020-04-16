@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const express = require('express');
 // const helmet = require('helmet');
 const userRouter = require('./users/userRouter.js');
@@ -13,8 +15,11 @@ server.use('/users', userRouter)
 server.use('/posts', postRouter)
 
 server.get('/', (req, res) => {
-  res.send(`<h2>Let's write some middleware!</h2>`);
-});
+  res.status(200).json({
+    message: `Welcome to ${process.env.COHORT}`,
+    student: process.env.STUDENT || "No student found",
+  })
+})
 
 //custom middleware
 

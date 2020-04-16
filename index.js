@@ -1,5 +1,8 @@
+require('dotenv').config()
+
 const server = require("./server"); // imports server from api
 
-server.listen(4021, () => {
-  console.log("\n*** Server Running on http://localhost:4021 ***\n"); // sets port to 5000
+const port = process.env.PORT || 4021
+server.listen(port, () => {
+  console.log( `*** Server Running on http://localhost:${port} ***` ); 
 });
